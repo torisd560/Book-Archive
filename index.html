@@ -17,7 +17,8 @@
     <!-------------- navbar ------------------>
     <header>
         <div class=" bg-dark  w-100 p-3">
-            <p class="text-white text-center fs-3 fw-bold my-2"><i class="fas fa-book-reader fs-1 text-success"></i> Book Archive</p>
+            <p class="text-white text-center fs-3 fw-bold my-2"><i class="fas fa-book-reader fs-1 text-success"></i>
+                Book Archive</p>
         </div>
     </header>
     <main>
@@ -28,9 +29,18 @@
                 <button onclick="searchBooks()" class="btn btn-outline-secondary" type="button"><i
                         class="fas fa-search fs-5"></i></button>
             </div>
+            <!----------------- spinner ------------------->
+            <div class="d-flex justify-content-center">
+                <div id="spinner" class="spinner-border text-success" role="status"  style="display: none;">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>
+            <!----------- resut found number div------------>
             <div id="search-result" class="bg-dark w-50 mx-auto my-5" style="display: none;">
-                <p class=" text-info text-center fw-bold fs-5 p-2 px-5 ">Dear Sir/Mam, Your Search Result Found Number
-                    <span id="found-result" class="text-white">0</span></p>
+                <p class=" text-success text-center fw-bold fs-5 p-2 px-5 ">Dear Sir/Mam, Your Search Result Found
+                    Number
+                    <span id="found-result" class="text-white">0</span>
+                </p>
             </div>
             <!------------------ error div----------------------->
             <div id="error" class="bg-danger w-25 h-25 mx-auto" style="display: none;">
