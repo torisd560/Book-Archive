@@ -15,7 +15,6 @@ const erreDiv = document.getElementById('error');
 const toggleSpinner = displayStyle => {
     document.getElementById('spinner').style.display = displayStyle;
 }
-
 //---------------search feild---------------------
 const searchBooks = () => {
     const searchInput = document.getElementById('search-input');
@@ -33,8 +32,8 @@ const searchBooks = () => {
         .then(res => res.json())
         .then(data => displyBooks(data))
 }
-    //----------------------------display books on UI-----------------------
-    const displyBooks = books => {
+//----------------------------display books on UI-----------------------
+const displyBooks = books => {
     const books1 = books.docs
     //---------------error message---------------------------------------
     if (books1.length === 0) {
@@ -42,7 +41,6 @@ const searchBooks = () => {
         erreDiv.style.display = 'block'
         toggleSpinner('none')
     }
-
     //------------------clear display data-------------------------
     bookContainer.textContent = '';
 
