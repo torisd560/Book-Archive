@@ -13,28 +13,31 @@ const searchBooks = () => {
     const searchText = searchInput.value;
     //----------display spinner---------------------
     toggleSpinner('block')
+
     //-----------------clear search input--------------------
     searchInput.value = '';
     //------------load data from API----------------
     fetch(`https://openlibrary.org/search.json?q=${searchText}`)
         .then(res => res.json())
-        .then(data => displyBooks(data.docs))
+        .then(data => displyBooks(data))
 }
 //----------------------------display books on UI-----------------------
 const displyBooks = books => {
+    console.log(books)
+    const books1=books.docs
     //---------------error message---------------------------------------
-    if (books.length === 0) {
+    if (books1.length === 0) {
         erreDiv.style.display = 'block'
         searchResultContainer.style.display = 'none';
+        toggleSpinner('none')
     }
     //------------------clear display data-------------------------
     const bookContainer = document.getElementById('books-container');
     bookContainer.textContent = '';
     //----------------------forEatch get book----------------------
-    books.forEach(book => {
-        console.log(book)
+    books1.forEach(book => {
         searchResultContainer.style.display = 'block';
-        foundResult.innerText = books.length;
+        foundResult.innerText = books.numFound;
         erreDiv.style.display = 'none'
         const div = document.createElement('div')
         div.classList.add('col')
@@ -45,11 +48,13 @@ const displyBooks = books => {
                         <h6 class="card-title"><strong>Book Name:</strong> ${book.title}</h6>
                         <p><strong>Author Name:</strong> ${book.author_name ? book.author_name : ''}<p>
                         <p><strong>First publish year:</strong>  ${book.first_publish_year ? book.first_publish_year : ''}</p>
-                        <p><strong>Publisher: </strong> ${book.publisher ?book.publisher:''}</p>
+                        <p><strong>Publisher: </strong> ${book.publisher ?book.publisher[0]:''}</p>
                 </div>
             </div>
             `;
         bookContainer.appendChild(div);
         toggleSpinner('none')
     });
+    
+    
 }
