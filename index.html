@@ -14,16 +14,29 @@
 </head>
 
 <body>
-    <!------------search area start ---------->
+   <header>
+
+   </header>
+   <main>
+       <section>
+            <!------------search area start ---------->
     <div class="input-group my-5 w-50 mx-auto">
         <input id="search-input" type="text" class="form-control p-2" placeholder="Search for Books.....">
         <button onclick="searchBooks()" class="btn btn-outline-secondary" type="button"><i
                 class="fas fa-search fs-5"></i></button>
     </div>
+    <!------------------ error div----------------------->
+    <div id="error" class="bg-danger w-25 h-25 mx-auto" style="display: none;"> 
+        <p class=" text-white text-center p-3 fw-bold">"No Result Found"</p>
+    </div>
     <!------------------display books -------------------->
     <div id="books-container" class=" container mx-auto row row-cols-1 row-cols-md-3 g-4">
     </div>
-    <script src="/app.js"></script>
+    
+       </section>
+   </main>
+   <!-------------- script link ---------------- -->
+   <script src="/app.js"></script>
 </body>
 
 </html>
