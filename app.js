@@ -19,12 +19,14 @@ const displyBooks = books => {
     //---------------error message---------------------------------------
     if (books.length === 0) {
         erreDiv.style.display = 'block'
+        searchResultContainer.style.display = 'none';
     }
     //------------------clear display data-------------------------
     const bookContainer = document.getElementById('books-container');
     bookContainer.textContent = '';
     //----------------------forEatch get book----------------------
     books.forEach(book => {
+        console.log(book)
         searchResultContainer.style.display = 'block';
         foundResult.innerText = books.length;
         erreDiv.style.display = 'none'
