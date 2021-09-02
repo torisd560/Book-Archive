@@ -1,7 +1,9 @@
 //---------------global variable start-------------------------------
+//-------------------display books-------------------------------
+const cardContainer = document.getElementById('card-container')
 const bookContainer = document.getElementById('books-container');
 
-//-------------------- found result----------------------------
+//-------------------- found result number----------------------------
 const searchResultContainer = document.getElementById('search-result');
 const foundResult = document.getElementById('found-result')
 
@@ -20,6 +22,9 @@ const searchBooks = () => {
     const searchText = searchInput.value;
     //----------display spinner---------------------
     toggleSpinner('block')
+    searchResultContainer.style.display = 'none'
+    cardContainer.style.display = 'none'
+    erreDiv.style.display = 'none'
 
     //-----------------clear search input--------------------
     searchInput.value = '';
@@ -28,13 +33,13 @@ const searchBooks = () => {
         .then(res => res.json())
         .then(data => displyBooks(data))
 }
-//----------------------------display books on UI-----------------------
-const displyBooks = books => {
+    //----------------------------display books on UI-----------------------
+    const displyBooks = books => {
     const books1 = books.docs
     //---------------error message---------------------------------------
     if (books1.length === 0) {
-        erreDiv.style.display = 'block'
         searchResultContainer.style.display = 'none';
+        erreDiv.style.display = 'block'
         toggleSpinner('none')
     }
 
@@ -55,13 +60,15 @@ const displyBooks = books => {
                 <div class="card-body">
                         <h6 class="card-title"><strong>Book Name:</strong> ${book.title}</h6>
                         <p><strong>Author Name:</strong> ${book.author_name ? book.author_name : ''}<p>
-                        <p><strong>First publish year:</strong>  ${book.first_publish_year ? book.first_publish_year: ''}</p>
+                        <p><strong>First publish year:</strong>  ${book.first_publish_year ? book.first_publish_year : ''}</p>
                         <p><strong>Publisher: </strong> ${book.publisher ? book.publisher[0] : ''}</p>
                 </div>
             </div>
             `;
             bookContainer.appendChild(div);
         }
+        toggleSpinner('none')
+        searchResultContainer.style.display = 'block'
+        cardContainer.style.display = 'block'
     });
-    toggleSpinner('none')
- }
+}
