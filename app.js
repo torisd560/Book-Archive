@@ -1,3 +1,10 @@
+const searchResultContainer = document.getElementById('search-result');
+const foundResult = document.getElementById('found-result')
+
+
+
+
+
 // error div
 const erreDiv =document.getElementById('error');
 // search by bookname from API
@@ -20,6 +27,8 @@ const displyBooks = books => {
         erreDiv.style.display = 'block'
     }
     books.forEach(book => {
+        searchResultContainer.style.display = 'block';
+        foundResult.innerText = books.length;
         erreDiv.style.display = 'none'
         const bookContainer = document.getElementById('books-container');
         bookContainer.textContent - '';
