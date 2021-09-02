@@ -1,4 +1,4 @@
-//---------------global variable-------------------------------
+//---------------global variable start-------------------------------
 const bookContainer = document.getElementById('books-container');
 
 //-------------------- found result----------------------------
@@ -7,6 +7,7 @@ const foundResult = document.getElementById('found-result')
 
 //----------------error div----------------------------
 const erreDiv = document.getElementById('error');
+//---------------global variable end-------------------------
 
 //----------------spinner------------------------------------
 const toggleSpinner = displayStyle => {
@@ -29,7 +30,6 @@ const searchBooks = () => {
 }
 //----------------------------display books on UI-----------------------
 const displyBooks = books => {
-    console.log(books)
     const books1 = books.docs
     //---------------error message---------------------------------------
     if (books1.length === 0) {
@@ -50,19 +50,18 @@ const displyBooks = books => {
             const div = document.createElement('div')
             div.classList.add('col')
             div.innerHTML = `
-            <div class="card h-100">
+            <div class=" card h-100 border-2 border-secondary">
                 <img src="https://covers.openlibrary.org/b/id/${book.cover_i ? book.cover_i : ''}-M.jpg" class="card-img-top img-fluid h-75" alt="...">
                 <div class="card-body">
                         <h6 class="card-title"><strong>Book Name:</strong> ${book.title}</h6>
                         <p><strong>Author Name:</strong> ${book.author_name ? book.author_name : ''}<p>
-                        <p><strong>First publish year:</strong>  ${book.first_publish_year ? book.first_publish_year[0] : ''}</p>
+                        <p><strong>First publish year:</strong>  ${book.first_publish_year ? book.first_publish_year: ''}</p>
                         <p><strong>Publisher: </strong> ${book.publisher ? book.publisher[0] : ''}</p>
                 </div>
             </div>
             `;
             bookContainer.appendChild(div);
-
         }
     });
     toggleSpinner('none')
-}
+ }
